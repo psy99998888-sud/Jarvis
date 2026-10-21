@@ -59,7 +59,7 @@ form input{flex:1;min-width:0;background:var(--panel);border:1px solid var(--lin
   <button id="key" type="button" title="APIキーを入れ直す">鍵</button>
 </header>
 <div class="kp" id="kp" hidden>
-  <input id="ki" type="password" placeholder="APIキーを貼り付け" autocomplete="off" aria-label="APIキー">
+  <input id="ki" type="password" placeholder="Googleのキーを貼り付け" autocomplete="off" aria-label="Googleのキー">
   <button id="ks" type="button">保存</button>
 </div>
 <div class="opts">
@@ -76,7 +76,7 @@ form input{flex:1;min-width:0;background:var(--panel);border:1px solid var(--lin
 </form>
 <script>
 const $=id=>document.getElementById(id);
-const MODEL="claude-sonnet-5-5";
+const MODEL="gemini-flash-latest";
 const L={idle:"待機中",listening:"聞いています",thinking:"考えています",speaking:"話しています"};
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 let hist=[],busy=false,voice=true,rec=null,hf=false,vs=[];
@@ -123,15 +123,17 @@ async function send(text){
   const system="あなたは「"+name+"」。ユーザー専用のAIアシスタントで、映画のジャービスのように落ち着いて丁寧、ときどき軽いユーモアを交える日本語で話す。返答は音声で読み上げられるので、2〜3文で短く答え、記号や箇条書きは使わない。";
   const ai=bubble("ai","…");state("thinking");
   try{
-    const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:MODEL,max_tokens:600,system,messages:hist})});
+    const contents=hist.map(m=>({role:m.role==="user"?"user":"model",parts:[{text:m.content}]}));
+    const r=await fetch("https://generativelanguage.googleapis.com/v1beta/models/"+MODEL+":generateContent",{method:"POST",headers:{"content-type":"application/json","x-goog-api-key":key},body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents,generationConfig:{maxOutputTokens:600}})});
     const d=await r.json();
     if(!r.ok){const e=new Error(d.error&&d.error.message||"error");e.status=r.status;throw e}
-    const out=d.content.filter(b=>b.type==="text").map(b=>b.text).join("");
+    const out=((d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts)||[]).map(p=>p.text||"").join("");
+    if(!out)throw new Error("返事が空でした");
     ai.textContent=out;hist.push({role:"assistant",content:out});save();
     busy=false;speak(out);return;
   }catch(e){
-    hist.pop();if(e.status===401)showKey(true);
-    ai.textContent=e.status===401?"APIキーが正しくありません。右上の鍵ボタンから入れ直してください。":e.status===429?"少し混み合っています。しばらくしてからもう一度どうぞ。":e.status===400&&/credit/i.test(e.message)?"APIの残高が足りません。Anthropic Console で残高を確認してください。":"通信に失敗しました。ネットワークとAPIキーを確認してください。";
+    hist.pop();if((e.status===400||e.status===403)&&/key/i.test(e.message))showKey(true);
+    ai.textContent=(e.status===400||e.status===403)&&/key/i.test(e.message)?"キーが正しくありません。右上の鍵ボタンから入れ直してください。":e.status===429?"無料の利用枠がいっぱいです。しばらくしてからもう一度どうぞ。":"うまくいきませんでした。"+(e.message||"");
     busy=false;after();
   }
 }
