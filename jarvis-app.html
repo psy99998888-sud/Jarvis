@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ジャービス</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ジャービス">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#06121c">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAGeUlEQVR4nO2dwXHcMAxFmUwmBeQcN+JOUqE7cSNuJAfO7Gi8C4migI8P6r+zLZLgE0hpSerH7z9/mxCv+JldAcGL5BAmkkOYSA5hIjmEieQQJpJDmEgOYSI5hInkECaSQ5hIDmEiOYSJ5BAmkkOYSA5hIjmEieQQJpJDmEgOYSI5hInkECaSQ5j8yq5ADv8+v87+y8f7W0RNmPlxk01NEzbscwdXVpbDXQiLVUVZTQ6YEBYribKOHOlabFlDkfJyUDnxTGlLCstxUYtT3YYsi4eScjA8iDLUIZpicpzqElhncNbqOmXkGO+AxOiXqOQ4NeQYDDpJxGvVdgd2OUYCTRvl0pVv5HIcBpc5sg/qtoJXjv2Y0gbUomJzGOWoGMdBajWNbj1HrfCdZb/+bG97uTLHTnSqa/GNEi0lyhwl4uXFTot48geLHLcyo8PvB8WwYsViVS2+Qdv8/MxBGxoYVkvT80eyHDKjw+lHphwyYwuhH2lyyIxn2PzIkUNmWFD5kSCHzNiHx4/8p5WOzNhCEg20HC/1J4kFFS9jAk4e0JdgbGbwL9nKjRhuI3X6K53ORDW2/8KQ5P59fmGqkbzLnnOB+Mh1MDX/eH9LvKlAw0piegwNbmITAEUj5Mhq20q77FNiuObhLeBU3ItjmI74Ep45wMqnT3vBTQs1MuEl2MJmhNYBn5lihxVkb82VdRjxuUdf5FNYXFmxw8pzZCNacrb/pusAK+hUHUrKgRkjU/YuJ26YRs48oHOOLDM+3t98ix6/YOlTDKPkAMw2Brcpx0Vz8OIkoZgAlzl8O4lnAzveD1jyYFnP4Q4y/a73+qsTIkd0Ij3cT4vvrcNCc2MyByhzwJ4Ucm9imB+YZvrLEXqLMJsxUofE4EyAyBw8E0MMy7S30oSU4aeT6xRqRSU5duBJGx22+szhLEfcm/9yZzQATlh4LsI3LZXPHJxmdJjrNkINOQqN04OUaFHtZYKhY5bLxXOXj1/E8yf7oAlH3GwDs6kperYUN8+rMay8BGPGqb98Sd2ZR+1hZY7pTW91u3kO9szhPmBfuSBVZQCwy2ExdxNf74ygZcycuMlBfhPcCq++CMwcbLeL+15qEuLiTD2sOHaDb4/SVswXajks2HLSCBXrXFIOgeEWckSkbubhwItbyCHmkBzCRHIIE8khTCSHMJEcwuQWckS8gKr4Uusst5BDzFFSjoovoCrWmVoOx9TtfrIP4aXcCZSD7V7x6ga27oyLs5scbCG7M3dffZ61XC9reWIK7HK4J6QrF6SqDIA7bk3oXXLqbibvxSDYM8cOsL1GsN1TbDifYAzeEcm/V9a6uNf1Q0+7rj2seB0Lv/aHHKapMaysN+SXaFENOXZgvjWZ6zaCsxxxBxEBTlHyBXBOVfTnNcpnjg6bH2z1maOSHCXG6UMKtQIhB+Y24rlZl2mvvxyhd0bu4fMjJB7A7X5x0LACOxM+1w+YGZhmhsgRPawe+oFX5LDQ3JjMUWlCegr+r5byg5MD/ykrnokh/hNmLkTJAXhgG/QjLpSDFycJxQTQYSXrO5ruioxfMPE7utfRF6kZCzpVh5JfpG7YzyfzfMt+5LJzIOPZouVoWNNJnhqQDQyd0CQ8ysZ1IcPPFiupH545GjwZWiVGg29R9M1Qe5mgxcT68uvFrQcic7Qk8XeK9iKxCYCiQXK0VD+s0q+QW3NM6cnDitfy8UMepdT6sk7u8xdODpKvnW17N+st50Vg9cENK53cwaUW6bFCv+d42TaGjMJGuhmNZz2H/NhCEo0EOSz9SSKSTvTG4HFyMof8sOAxoyUOK/LjGSozWu6cQ35sYTOjpU9I5UeH0IyWLkeTH6xmNPxLMAvAnnRCyFudnzk65U5YuA65GY1HjnYzP/jNaDzDyoPcTYUACjWQKHN0mPdJX6eQGY0wczyoFcdDKjaHV442kCc4Y/qNuq2glqNlbFN2pHTlG78cnVpLtmrVdocacrQzU9HEoJeo5Dhl5OhwfuqAs1bXKSZHZ+KBluEohEJadErK0UFuMqi1ocGLwnJ0yF+LFdWiU16OB1SWlHbiwTpydNIVWUOLzmpybNEu+4usLMeWuhupE7mLHN+4w4PodW4qhxiBbj2H4EFyCBPJIUwkhzCRHMJEcggTySFMJIcwkRzCRHIIE8khTCSHMJEcwkRyCBPJIUwkhzCRHMJEcggTySFMJIcwkRzCRHIIk/+dPDFzT/0sugAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAGeUlEQVR4nO2dwXHcMAxFmUwmBeQcN+JOUqE7cSNuJAfO7Gi8C4migI8P6r+zLZLgE0hpSerH7z9/mxCv+JldAcGL5BAmkkOYSA5hIjmEieQQJpJDmEgOYSI5hInkECaSQ5hIDmEiOYSJ5BAmkkOYSA5hIjmEieQQJpJDmEgOYSI5hInkECaSQ5j8yq5ADv8+v87+y8f7W0RNmPlxk01NEzbscwdXVpbDXQiLVUVZTQ6YEBYribKOHOlabFlDkfJyUDnxTGlLCstxUYtT3YYsi4eScjA8iDLUIZpicpzqElhncNbqOmXkGO+AxOiXqOQ4NeQYDDpJxGvVdgd2OUYCTRvl0pVv5HIcBpc5sg/qtoJXjv2Y0gbUomJzGOWoGMdBajWNbj1HrfCdZb/+bG97uTLHTnSqa/GNEi0lyhwl4uXFTot48geLHLcyo8PvB8WwYsViVS2+Qdv8/MxBGxoYVkvT80eyHDKjw+lHphwyYwuhH2lyyIxn2PzIkUNmWFD5kSCHzNiHx4/8p5WOzNhCEg20HC/1J4kFFS9jAk4e0JdgbGbwL9nKjRhuI3X6K53ORDW2/8KQ5P59fmGqkbzLnnOB+Mh1MDX/eH9LvKlAw0piegwNbmITAEUj5Mhq20q77FNiuObhLeBU3ItjmI74Ep45wMqnT3vBTQs1MuEl2MJmhNYBn5lihxVkb82VdRjxuUdf5FNYXFmxw8pzZCNacrb/pusAK+hUHUrKgRkjU/YuJ26YRs48oHOOLDM+3t98ix6/YOlTDKPkAMw2Brcpx0Vz8OIkoZgAlzl8O4lnAzveD1jyYFnP4Q4y/a73+qsTIkd0Ij3cT4vvrcNCc2MyByhzwJ4Ucm9imB+YZvrLEXqLMJsxUofE4EyAyBw8E0MMy7S30oSU4aeT6xRqRSU5duBJGx22+szhLEfcm/9yZzQATlh4LsI3LZXPHJxmdJjrNkINOQqN04OUaFHtZYKhY5bLxXOXj1/E8yf7oAlH3GwDs6kperYUN8+rMay8BGPGqb98Sd2ZR+1hZY7pTW91u3kO9szhPmBfuSBVZQCwy2ExdxNf74ygZcycuMlBfhPcCq++CMwcbLeL+15qEuLiTD2sOHaDb4/SVswXajks2HLSCBXrXFIOgeEWckSkbubhwItbyCHmkBzCRHIIE8khTCSHMJEcwuQWckS8gKr4Uusst5BDzFFSjoovoCrWmVoOx9TtfrIP4aXcCZSD7V7x6ga27oyLs5scbCG7M3dffZ61XC9reWIK7HK4J6QrF6SqDIA7bk3oXXLqbibvxSDYM8cOsL1GsN1TbDifYAzeEcm/V9a6uNf1Q0+7rj2seB0Lv/aHHKapMaysN+SXaFENOXZgvjWZ6zaCsxxxBxEBTlHyBXBOVfTnNcpnjg6bH2z1maOSHCXG6UMKtQIhB+Y24rlZl2mvvxyhd0bu4fMjJB7A7X5x0LACOxM+1w+YGZhmhsgRPawe+oFX5LDQ3JjMUWlCegr+r5byg5MD/ykrnokh/hNmLkTJAXhgG/QjLpSDFycJxQTQYSXrO5ruioxfMPE7utfRF6kZCzpVh5JfpG7YzyfzfMt+5LJzIOPZouVoWNNJnhqQDQyd0CQ8ysZ1IcPPFiupH545GjwZWiVGg29R9M1Qe5mgxcT68uvFrQcic7Qk8XeK9iKxCYCiQXK0VD+s0q+QW3NM6cnDitfy8UMepdT6sk7u8xdODpKvnW17N+st50Vg9cENK53cwaUW6bFCv+d42TaGjMJGuhmNZz2H/NhCEo0EOSz9SSKSTvTG4HFyMof8sOAxoyUOK/LjGSozWu6cQ35sYTOjpU9I5UeH0IyWLkeTH6xmNPxLMAvAnnRCyFudnzk65U5YuA65GY1HjnYzP/jNaDzDyoPcTYUACjWQKHN0mPdJX6eQGY0wczyoFcdDKjaHV442kCc4Y/qNuq2glqNlbFN2pHTlG78cnVpLtmrVdocacrQzU9HEoJeo5Dhl5OhwfuqAs1bXKSZHZ+KBluEohEJadErK0UFuMqi1ocGLwnJ0yF+LFdWiU16OB1SWlHbiwTpydNIVWUOLzmpybNEu+4usLMeWuhupE7mLHN+4w4PodW4qhxiBbj2H4EFyCBPJIUwkhzCRHMJEcggTySFMJIcwkRzCRHIIE8khTCSHMJEcwkRyCBPJIUwkhzCRHMJEcggTySFMJIcwkRzCRHIIk/+dPDFzT/0sugAAAABJRU5ErkJggg==">
+
+<style>
+:root{--bg:#eaf4f8;--panel:#fff;--ink:#0a2233;--dim:#547086;--acc:#0a7ea4;--line:#bcd6e2;--user:#d6edf6;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#06121c;--panel:#0c2030;--ink:#dff4ff;--dim:#7fa3ba;--acc:#5fd8ff;--line:#1b3d52;--user:#12374d;color-scheme:dark}}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;display:flex;flex-direction:column;max-width:640px;margin-inline:auto;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+header{display:flex;align-items:center;gap:8px;padding:12px 16px}
+header input{flex:1;min-width:0;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:700 18px inherit;font-family:inherit;padding:4px 0}
+button,select{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+button[aria-pressed="false"]{color:var(--dim)}
+button[aria-pressed="true"].on{background:var(--acc);color:var(--bg);border-color:var(--acc);font-weight:700}
+.opts{display:flex;gap:8px;padding:0 16px 4px}
+.opts select{flex:1;min-width:0}
+.core{display:grid;place-items:center;height:168px;flex:none}
+.orb{position:relative;width:128px;height:128px;border-radius:50%;display:grid;place-items:center}
+.orb i{position:absolute;border-radius:50%;border:2px solid var(--acc)}
+.orb .r1{inset:0;border-style:dashed;opacity:.5;animation:spin 24s linear infinite}
+.orb .r2{inset:14px;border-color:var(--acc) transparent var(--acc) transparent;animation:spin 8s linear infinite reverse}
+.orb .r3{inset:34px;border-width:3px;opacity:.9;animation:beat 3s ease-in-out infinite}
+.orb b{width:28px;height:28px;border-radius:50%;background:var(--acc);box-shadow:0 0 28px var(--acc);animation:beat 3s ease-in-out infinite}
+.orb[data-s="listening"] b,.orb[data-s="listening"] .r3{animation-duration:.9s}
+.orb[data-s="thinking"] .r2{animation-duration:1.2s}
+.orb[data-s="speaking"] b,.orb[data-s="speaking"] .r3{animation-duration:.5s}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes beat{50%{transform:scale(1.15);opacity:.75}}
+@media (prefers-reduced-motion:reduce){.orb i,.orb b{animation:none!important}}
+#st{text-align:center;color:var(--dim);font-size:13px;min-height:20px;margin:0 0 6px}
+#log{flex:1;overflow-y:auto;padding:8px 16px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:86%;padding:10px 14px;border-radius:14px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+.m.ai{align-self:flex-start;background:var(--panel);border:1px solid var(--line)}
+.m.me{align-self:flex-end;background:var(--user)}
+form{display:flex;gap:8px;padding:12px 16px}
+form input{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;color:var(--ink);font:inherit;padding:10px 14px}
+#go{background:var(--acc);color:var(--bg);border-color:var(--acc);font-weight:700}
+[hidden]{display:none!important}
+.kp{display:flex;gap:8px;padding:0 16px 8px}
+.kp input{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--ink);font:inherit;padding:8px 12px}
+</style>
+</head>
+<body>
+<header>
+  <input id="name" value="ジャービス" aria-label="アシスタントの名前" maxlength="12">
+  <button id="spk" class="on" type="button" aria-pressed="true">声 オン</button>
+  <button id="key" type="button" title="APIキーを入れ直す">鍵</button>
+</header>
+<div class="kp" id="kp" hidden>
+  <input id="ki" type="password" placeholder="APIキーを貼り付け" autocomplete="off" aria-label="APIキー">
+  <button id="ks" type="button">保存</button>
+</div>
+<div class="opts">
+  <button id="hf" class="on" type="button" aria-pressed="false">会話モード オフ</button>
+  <select id="vs" aria-label="声の種類"><option>標準の声</option></select>
+</div>
+<div class="core"><div class="orb" id="orb" data-s="idle"><i class="r1"></i><i class="r2"></i><i class="r3"></i><b></b></div></div>
+<p id="st" role="status">待機中</p>
+<div id="log" aria-live="polite"></div>
+<form id="f">
+  <button id="mic" type="button">マイク</button>
+  <input id="t" placeholder="話しかける、または入力する" autocomplete="off" aria-label="メッセージ">
+  <button id="go" type="submit">送信</button>
+</form>
+<script>
+const $=id=>document.getElementById(id);
+const MODEL="claude-sonnet-5-5";
+const L={idle:"待機中",listening:"聞いています",thinking:"考えています",speaking:"話しています"};
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let hist=[],busy=false,voice=true,rec=null,hf=false,vs=[];
+try{hist=JSON.parse(store.get("jv-hist")||"[]")}catch(e){hist=[]}
+const nm=store.get("jv-name");if(nm)$("name").value=nm;
+$("name").addEventListener("change",()=>store.set("jv-name",$("name").value));
+function state(s){$("orb").dataset.s=s;$("st").textContent=L[s]}
+function bubble(c,t){const d=document.createElement("div");d.className="m "+c;d.textContent=t;$("log").appendChild(d);$("log").scrollTop=1e9;return d}
+function save(){while(hist.length>40)hist.shift();while(hist.length&&hist[0].role!=="user")hist.shift();store.set("jv-hist",JSON.stringify(hist))}
+function getKey(){return store.get("jv-key")}
+function showKey(on){$("kp").hidden=!on;if(on)$("ki").focus()}
+$("key").addEventListener("click",()=>showKey($("kp").hidden));
+$("ks").addEventListener("click",()=>{const k=$("ki").value.trim();if(k){store.set("jv-key",k);$("ki").value="";showKey(false);bubble("ai","キーを保存しました。話しかけてください。")}});
+if(!getKey())showKey(true);
+bubble("ai","システム起動。ご用件をどうぞ。");
+hist.forEach(m=>bubble(m.role==="user"?"me":"ai",m.content));
+function setHf(){$("hf").setAttribute("aria-pressed",hf);$("hf").textContent=hf?"会話モード オン":"会話モード オフ"}
+function after(){state("idle");if(hf)setTimeout(listen,300)}
+function loadVoices(){
+  if(!window.speechSynthesis)return;
+  vs=speechSynthesis.getVoices().filter(v=>/^ja/i.test(v.lang));
+  if(!vs.length)return;
+  $("vs").textContent="";
+  vs.forEach((v,i)=>{const o=document.createElement("option");o.value=i;o.textContent=v.name;$("vs").appendChild(o)});
+  const k=vs.findIndex(v=>v.name===store.get("jv-voice"));if(k>=0)$("vs").value=k;
+}
+if(window.speechSynthesis){loadVoices();speechSynthesis.onvoiceschanged=loadVoices}
+function speak(t){
+  if(!voice||!window.speechSynthesis){after();return}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t);u.lang="ja-JP";
+  if(vs[$("vs").value])u.voice=vs[$("vs").value];
+  u.onstart=()=>state("speaking");u.onend=u.onerror=after;
+  speechSynthesis.speak(u);
+}
+$("vs").addEventListener("change",()=>{if(vs[$("vs").value])store.set("jv-voice",vs[$("vs").value].name);const v=voice;voice=true;speak("こんにちは。この声で話します。");voice=v});
+async function send(text){
+  text=text.trim();
+  if(!text||busy)return;
+  const key=getKey();if(!key){$("t").value=text;showKey(true);return}
+  busy=true;if(window.speechSynthesis)speechSynthesis.cancel();
+  bubble("me",text);hist.push({role:"user",content:text});
+  const name=$("name").value||"ジャービス";
+  const system="あなたは「"+name+"」。ユーザー専用のAIアシスタントで、映画のジャービスのように落ち着いて丁寧、ときどき軽いユーモアを交える日本語で話す。返答は音声で読み上げられるので、2〜3文で短く答え、記号や箇条書きは使わない。";
+  const ai=bubble("ai","…");state("thinking");
+  try{
+    const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:MODEL,max_tokens:600,system,messages:hist})});
+    const d=await r.json();
+    if(!r.ok){const e=new Error(d.error&&d.error.message||"error");e.status=r.status;throw e}
+    const out=d.content.filter(b=>b.type==="text").map(b=>b.text).join("");
+    ai.textContent=out;hist.push({role:"assistant",content:out});save();
+    busy=false;speak(out);return;
+  }catch(e){
+    hist.pop();if(e.status===401)showKey(true);
+    ai.textContent=e.status===401?"APIキーが正しくありません。右上の鍵ボタンから入れ直してください。":e.status===429?"少し混み合っています。しばらくしてからもう一度どうぞ。":e.status===400&&/credit/i.test(e.message)?"APIの残高が足りません。Anthropic Console で残高を確認してください。":"通信に失敗しました。ネットワークとAPIキーを確認してください。";
+    busy=false;after();
+  }
+}
+$("f").addEventListener("submit",e=>{e.preventDefault();const v=$("t").value;$("t").value="";send(v)});
+$("spk").addEventListener("click",()=>{voice=!voice;$("spk").setAttribute("aria-pressed",voice);$("spk").textContent=voice?"声 オン":"声 オフ";if(!voice&&window.speechSynthesis){speechSynthesis.cancel();state("idle")}});
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(!SR){$("mic").hidden=true;$("hf").hidden=true}
+function listen(){
+  if(!SR||rec||busy)return;
+  rec=new SR();rec.lang="ja-JP";let got=false;
+  rec.onstart=()=>state("listening");
+  rec.onresult=e=>{got=true;send(e.results[0][0].transcript)};
+  rec.onend=()=>{rec=null;if(!busy&&!got){state("idle");if(hf)setTimeout(listen,400)}};
+  rec.onerror=e=>{if(e.error==="not-allowed"||e.error==="service-not-allowed"){hf=false;setHf();bubble("ai","マイクが使えません。ブラウザの設定でマイクを許可してください。")}};
+  try{rec.start()}catch(e){rec=null}
+}
+$("mic").addEventListener("click",()=>{if(rec){hf=false;setHf();rec.stop()}else listen()});
+$("hf").addEventListener("click",()=>{hf=!hf;setHf();if(hf)listen();else if(rec)rec.stop()});
+</script>
+</body>
+</html>
