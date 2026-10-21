@@ -123,7 +123,7 @@ async function send(text){
   busy=true;if(window.speechSynthesis)speechSynthesis.cancel();
   bubble("me",text);hist.push({role:"user",content:text});
   const name=$("name").value||"ジャービス";
-  const system="あなたは「"+name+"」。ユーザー専用のAIアシスタントで、映画のジャービスのように落ち着いて丁寧、ときどき軽いユーモアを交える日本語で話す。返答は音声で読み上げられるので、2〜3文で短く答え、記号や箇条書きは使わない。";
+  const system="あなたは「"+name+"」。ユーザー専用のAIアシスタントで、映画のジャービスのように落ち着いて丁寧、ときどき軽いユーモアを交える日本語で話す。返答は音声で読み上げられるので、2〜3文で短く答え、記号や箇条書きは使わない。ユーザーの発言は音声認識なので、聞き間違いが混じることがある。文脈から本来の意味を推測して答え、どうしても分からないときだけ聞き返す。";
   const ai=bubble("ai","…");state("thinking");
   try{
     const contents=hist.map(m=>({role:m.role==="user"?"user":"model",parts:[{text:m.content}]}));
@@ -146,9 +146,15 @@ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 if(!SR){$("mic").hidden=true;$("hf").hidden=true}
 function listen(){
   if(!SR||rec||busy)return;
-  rec=new SR();rec.lang="ja-JP";let got=false;
+  rec=new SR();rec.lang="ja-JP";rec.interimResults=true;rec.maxAlternatives=3;let got=false;
   rec.onstart=()=>state("listening");
-  rec.onresult=e=>{got=true;send(e.results[0][0].transcript)};
+  rec.onresult=e=>{
+    const res=e.results[e.results.length-1];
+    if(!res.isFinal){$("t").value=res[0].transcript;return}
+    got=true;
+    let best=res[0];for(let i=1;i<res.length;i++)if(res[i].confidence>best.confidence)best=res[i];
+    $("t").value="";send(best.transcript);
+  };
   rec.onend=()=>{rec=null;if(!busy&&!got){state("idle");if(hf)setTimeout(listen,400)}};
   rec.onerror=e=>{if(e.error==="not-allowed"||e.error==="service-not-allowed"){hf=false;setHf();bubble("ai","マイクが使えません。ブラウザの設定でマイクを許可してください。")}};
   try{rec.start()}catch(e){rec=null}
