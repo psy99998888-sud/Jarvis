@@ -72,6 +72,7 @@ form input{flex:1;min-width:0;background:var(--panel);border:1px solid var(--lin
 <form id="f">
   <button id="mic" type="button">マイク</button>
   <input id="t" placeholder="話しかける、または入力する" autocomplete="off" aria-label="メッセージ">
+  <button id="im" type="button">画像</button>
   <button id="go" type="submit">送信</button>
 </form>
 <script>
@@ -119,6 +120,7 @@ $("vs").addEventListener("change",()=>{if(vs[$("vs").value])store.set("jv-voice"
 async function send(text){
   text=text.trim();
   if(!text||busy)return;
+  if(IMG.test(text)){makeImage(text);return}
   const key=getKey();if(!key){$("t").value=text;showKey(true);return}
   busy=true;if(window.speechSynthesis)speechSynthesis.cancel();
   bubble("me",text);hist.push({role:"user",content:text});
@@ -140,6 +142,31 @@ async function send(text){
     busy=false;after();
   }
 }
+const IMG=/(画像|絵|イラスト|ポスター|ロゴ|写真).*(生成|作って|描いて|かいて|出して)|描いて|生成して/;
+async function makeImage(req){
+  if(busy)return;
+  const key=getKey();if(!key){$("t").value=req;showKey(true);return}
+  busy=true;if(window.speechSynthesis)speechSynthesis.cancel();
+  bubble("me",req);
+  const ai=bubble("ai","画像を作っています…");state("thinking");
+  try{
+    const r=await fetch("https://generativelanguage.googleapis.com/v1beta/models/"+MODEL+":generateContent",{method:"POST",headers:{"content-type":"application/json","x-goog-api-key":key},body:JSON.stringify({contents:[{role:"user",parts:[{text:"次の依頼を、画像生成AI向けの英語の詳しい説明文1つに変換してください。説明文だけを出力。\n依頼:"+req}]}],generationConfig:{maxOutputTokens:200}})});
+    const d=await r.json();
+    if(!r.ok){const e=new Error(d.error&&d.error.message||"error");e.status=r.status;throw e}
+    const p=((d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts)||[]).map(x=>x.text||"").join("").trim().replace(/\s+/g," ");
+    if(!p)throw new Error("依頼を読み取れませんでした");
+    const url="https://image.pollinations.ai/prompt/"+encodeURIComponent(p)+"?width=768&height=768&nologo=true&seed="+Math.floor(Math.random()*1e6);
+    const img=new Image();img.alt=req;img.style.cssText="max-width:100%;border-radius:10px;display:block";
+    await new Promise((ok,ng)=>{img.onload=ok;img.onerror=()=>ng(new Error("画像を取得できませんでした。15秒ほど待ってからもう一度どうぞ。"));img.src=url});
+    ai.textContent="";ai.appendChild(img);$("log").scrollTop=1e9;
+    hist.push({role:"user",content:req},{role:"assistant",content:"(画像を作りました)"});save();
+    busy=false;speak("できました。");return;
+  }catch(e){
+    ai.textContent=(e.status===400||e.status===403)&&/key/i.test(e.message)?"キーが正しくありません。右上の鍵ボタンから入れ直してください。":e.status===429?"無料の利用枠がいっぱいです。しばらくしてからもう一度どうぞ。":"うまくいきませんでした。"+(e.message||"");
+    busy=false;after();
+  }
+}
+$("im").addEventListener("click",()=>{const v=$("t").value.trim();if(!v){bubble("ai","作りたい画像の内容を入力してから「画像」を押してください。");return}$("t").value="";makeImage(v)});
 $("f").addEventListener("submit",e=>{e.preventDefault();const v=$("t").value;$("t").value="";send(v)});
 $("spk").addEventListener("click",()=>{voice=!voice;$("spk").setAttribute("aria-pressed",voice);$("spk").textContent=voice?"声 オン":"声 オフ";if(!voice&&window.speechSynthesis){speechSynthesis.cancel();state("idle")}});
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
