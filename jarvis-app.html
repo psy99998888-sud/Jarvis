@@ -101,7 +101,9 @@ function loadVoices(){
   if(!vs.length)return;
   $("vs").textContent="";
   vs.forEach((v,i)=>{const o=document.createElement("option");o.value=i;o.textContent=v.name;$("vs").appendChild(o)});
-  const k=vs.findIndex(v=>v.name===store.get("jv-voice"));if(k>=0)$("vs").value=k;
+  let k=vs.findIndex(v=>v.name===store.get("jv-voice"));
+  if(k<0)k=vs.findIndex(v=>/otoya|hattori|ichiro|male|男/i.test(v.name));
+  if(k>=0)$("vs").value=k;
 }
 if(window.speechSynthesis){loadVoices();speechSynthesis.onvoiceschanged=loadVoices}
 function speak(t){
@@ -109,6 +111,7 @@ function speak(t){
   speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(t);u.lang="ja-JP";
   if(vs[$("vs").value])u.voice=vs[$("vs").value];
+  u.pitch=0.75;u.rate=0.95;
   u.onstart=()=>state("speaking");u.onend=u.onerror=after;
   speechSynthesis.speak(u);
 }
